@@ -22,8 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBOutlet var cardButtons: [UIButton]!
-    
-    
+        
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
       if let cardNumber = cardButtons.index(of: sender)
@@ -54,12 +53,10 @@ class ViewController: UIViewController {
     var emoji = [Int: String]()
     
  func emoji(for card: Card) -> String {
-    /*    if emoji[card.identifier] != nil {
-            return emoji[card.identifier]!
-        } else {
-        return "?"
-   }
-*/
+    if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        }
     return emoji[card.identifier] ?? "?"
     }
 }
