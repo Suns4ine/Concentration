@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         print("choosen card was not in cardButtons")
         }
     }
-    
+   //MARK
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -60,3 +60,4 @@ class ViewController: UIViewController {
     return emoji[card.identifier] ?? "?"
     }
 }
+
