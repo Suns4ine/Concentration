@@ -15,4 +15,12 @@ class Concentration
     func chooseCard (at index: Int) {
         
     }
+    
+    init(numberOfPairsOfCards: Int) {
+        for _ in 1...numberOfPairsOfCards {
+         
+            let card = Card()
+            cards += [card, card]
+        }
+    }
 }
