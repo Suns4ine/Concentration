@@ -43,11 +43,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1g-UY-7ow">
-                                <rect key="frame" x="263" y="714" width="96" height="64"/>
+                                <rect key="frame" x="139" y="714" width="96" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.85906391770000001" blue="0.57026499230000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="New game"/>
                                 <connections>
+                                    <action selector="newGame" destination="BYZ-38-t0r" eventType="touchUpInside" id="8bZ-d4-hWZ"/>
                                     <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ieY-lM-Y5N"/>
                                 </connections>
                             </button>
@@ -219,13 +220,6 @@
                                     <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N7j-70-OK3"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLU-k0-RjD">
-                                <rect key="frame" x="124" y="714" width="107" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="1" green="0.91297244" blue="0.45101171880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flips: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ov-uL-eIq">
                                 <rect key="frame" x="16" y="714" width="118" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -240,6 +234,13 @@
                                 <color key="textColor" red="1" green="0.91297244" blue="0.45101171880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLU-k0-RjD">
+                                <rect key="frame" x="257" y="714" width="107" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.91297244" blue="0.45101171880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.41422969100000001" green="0.63255344749999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -247,6 +248,7 @@
                     <connections>
                         <outlet property="flips" destination="1ov-uL-eIq" id="RSq-8y-jaX"/>
                         <outlet property="nameTheme" destination="2tL-ry-AC7" id="JiZ-Gt-5yK"/>
+                        <outlet property="newGameButton" destination="C1g-UY-7ow" id="iOz-b3-Gdg"/>
                         <outlet property="score" destination="hLU-k0-RjD" id="JKp-q3-6la"/>
                         <outletCollection property="cardButtons" destination="nyL-F6-ORM" collectionClass="NSMutableArray" id="aaF-HJ-M0Q"/>
                         <outletCollection property="cardButtons" destination="OtB-9p-2rN" collectionClass="NSMutableArray" id="AJ2-6f-8CO"/>

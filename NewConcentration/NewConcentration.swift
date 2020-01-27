@@ -10,64 +10,101 @@ import Foundation
 
 
 class NewConcentration {
-
-    var cards = [Card]()
     
-    var score = 0
+    private(set) var cards = [Card]()
     
-    var indexOfOneAdndOnlyFaceUpCard: Int?
+    private(set) var flipCount = 0
+    private(set) var score = 0
+    private var seenCards: Set<Int> = []
+    
+    private struct Points {
+        static let matchBonus = 2
+        static let missMatchPenalty = 1
+    }
+    
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp  {
+                    guard foundIndex == nil else { return nil }
+                    foundIndex = index
+                }
+            }
+            return foundIndex
+        }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+        
+    }
     
     func chooseCard(at index: Int) {
+        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)) : Choosen index out of range")
         if !cards[index].isMatched {
-            if let matchIndex = indexOfOneAdndOnlyFaceUpCard, matchIndex != index {
+            flipCount += 1
+            if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
+                
                 if cards[matchIndex].identifier == cards[index].identifier {
+                    //cards match
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
+                    
+                    // Increase the score
+                    score += Points.matchBonus
+                } else {
+                    //cards didn't match - Penalize
+                    if seenCards.contains(index) {
+                        score -= Points.missMatchPenalty
+                    }
+                    if seenCards.contains(matchIndex) {
+                        score -= Points.missMatchPenalty
+                    }
+                    seenCards.insert(index)
+                    seenCards.insert(matchIndex)
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAdndOnlyFaceUpCard =  nil
+                
             } else {
-                for flipdownIndex in cards.indices {
-                 cards[flipdownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
-                indexOfOneAdndOnlyFaceUpCard = index
+                indexOfOneAndOnlyFaceUpCard = index
             }
         }
     }
- 
     
-    init(numberOfPairsCard: Int) {
-        
-        for _ in 1...numberOfPairsCard {
+    func resetGame (){
+        flipCount = 0
+        score = 0
+        seenCards = []
+        for index in cards.indices  {
+            cards[index].isFaceUp = false
+            cards[index].isMatched = false
+        }
+        cards.shuffle()
+    }
+    
+    init(numberOfPairsOfCards: Int) {
+        assert(numberOfPairsOfCards > 0,
+               "Concentration.init(\(numberOfPairsOfCards)) : You must have at least one pair of cards")
+        for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
         }
-       // cards.shuffle() ///?????
+        // Shuffle the cards
+        cards.shuffle()
     }
 }
-
-extension Int {
-    var arch4random: Int {
-        if self > 0 {
-            return Int(arc4random_uniform(UInt32(self)))}
-        else if self < 0 {
-            return -Int(arc4random_uniform(UInt32(abs(self))))
-        } else {
-            return 0
-        }
-    }
-}
-
-
 
 extension Array {
+    /// тасование элементов  `self` "по месту".
     mutating func shuffle() {
+        // пустая коллекция и с одним элементом не тасуются
         if count < 2 { return }
-
+        
         for i in indices.dropLast() {
             let diff = distance(from: i, to: endIndex)
-            let j = index(i, offsetBy: diff.arch4random)
+            let j = index(i, offsetBy: diff.arc4random)
             swapAt(i, j)
         }
     }
