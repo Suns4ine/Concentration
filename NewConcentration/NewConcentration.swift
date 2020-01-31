@@ -15,9 +15,29 @@ class NewConcentration {
     
     var score = 0
     
-    var indexOfOneAdndOnlyFaceUpCard: Int?
+    private var indexOfOneAdndOnlyFaceUpCard: Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    if foundIndex == nil {
+                        foundIndex = index
+                    } else {
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     
     func chooseCard(at index: Int) {
+        assert(cards.indices.contains(index), "NewConcentration.choosesCard(at: \(index)): choosen index not in the cards")
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAdndOnlyFaceUpCard, matchIndex != index {
                 if cards[matchIndex].identifier == cards[index].identifier {
@@ -25,12 +45,7 @@ class NewConcentration {
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAdndOnlyFaceUpCard =  nil
             } else {
-                for flipdownIndex in cards.indices {
-                 cards[flipdownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAdndOnlyFaceUpCard = index
             }
         }
@@ -38,7 +53,7 @@ class NewConcentration {
  
     
     init(numberOfPairsCard: Int) {
-        
+        assert(numberOfPairsCard > 0, "NewConcentration.init(\(numberOfPairsCard)): you must have at least one pair of cards")
         for _ in 1...numberOfPairsCard {
             let card = Card()
             cards += [card, card]
