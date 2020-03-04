@@ -48,8 +48,8 @@ class ViewController: UIViewController {
         flipCount = 0
         game.score = 0
         for index in cardButtons.indices {
-            game.cards[index].isFaceUp = false
-            game.cards[index].isMatched = false
+            //game.cards[index].isFaceUp = false
+            //game.cards[index].isMatched = false
             cardButtons[index].setTitle("", for: UIControlState.normal)
             cardButtons[index].backgroundColor = #colorLiteral(red: 1, green: 0.9091109633, blue: 0.3568683267, alpha: 1)
         }
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         indexTheme += 0
     }
     
-    private var emoji = [Int: String]()
+    private var emoji = [Card : String]()
     
     var emojiArray: [String: [String]] = [
         "Animals" : ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷"],
@@ -88,11 +88,11 @@ class ViewController: UIViewController {
     
     
     private func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+        if emoji[card] == nil, emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            emoji[card] = emojiChoices.remove(at: randomIndex)
         }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
 
     private func updateFromModel() {

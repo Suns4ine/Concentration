@@ -9,9 +9,9 @@
 import Foundation
 
 
-class NewConcentration {
+struct NewConcentration {
 
-    var cards = [Card]()
+    private(set) var cards = [Card]()
     
     var score = 0
     
@@ -36,11 +36,11 @@ class NewConcentration {
         }
     }
     
-    func chooseCard(at index: Int) {
+    mutating func chooseCard(at index: Int) {
         assert(cards.indices.contains(index), "NewConcentration.choosesCard(at: \(index)): choosen index not in the cards")
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAdndOnlyFaceUpCard, matchIndex != index {
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 }
