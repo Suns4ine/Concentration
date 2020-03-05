@@ -18,28 +18,41 @@ class ViewController: UIViewController {
     
     private (set) var flipCount: Int = 0 {
         didSet {
-            flips.text = "Flips: \(flipCount)"
+        updateFlipCountLabel()
         }
     }
     
-    var indexTheme = 0 {
-        willSet {
-            let emojiKeys = emojiArray.keys
-            var keysArray = [String]()
-            for keys in emojiKeys { keysArray.append(keys) }
-            let themeOne = keysArray[indexTheme]
-            //keysArray.shuffle()
-            if themeOne == keysArray[indexTheme] {
-            nameTheme.text = "\(keysArray[indexTheme + 1])"
-            emojiChoices = emojiArray[keysArray[indexTheme + 1]] ?? []
-            } else {
-            nameTheme.text = "\(keysArray[indexTheme])"
-            emojiChoices = emojiArray[keysArray[indexTheme]] ?? []
-            }
-        }
+    private func updateFlipCountLabel() {
+        let attributes: [NSAttributedStringKey : Any] = [
+            .strokeWidth: 5.0,
+            .strokeColor: #colorLiteral(red: 1, green: 0.9091109633, blue: 0.3568683267, alpha: 1)
+        ]
+        let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
+        flips.attributedText = attributedString
     }
     
-    @IBOutlet private weak var flips: UILabel!
+//    var indexTheme = 0 {
+//        willSet {
+//            let emojiKeys = emojiArray.keys
+//            var keysArray = [String]()
+//            for keys in emojiKeys { keysArray.append(keys) }
+//            let themeOne = keysArray[indexTheme]
+//            //keysArray.shuffle()
+//            if themeOne == keysArray[indexTheme] {
+//            nameTheme.text = "\(keysArray[indexTheme + 1])"
+//            emojiChoices = emojiArray[keysArray[indexTheme + 1]] ?? "?"
+//            } else {
+//            nameTheme.text = "\(keysArray[indexTheme])"
+//            emojiChoices = emojiArray[keysArray[indexTheme]] ?? "?"
+//            }
+//        }
+//    }
+    
+    @IBOutlet private weak var flips: UILabel! {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
     @IBOutlet weak var nameTheme: UILabel!
     @IBOutlet weak var score: UILabel!
     @IBOutlet private var cardButtons: [UIButton]!
@@ -54,7 +67,7 @@ class ViewController: UIViewController {
             cardButtons[index].backgroundColor = #colorLiteral(red: 1, green: 0.9091109633, blue: 0.3568683267, alpha: 1)
         }
         emojiChoices.removeAll()
-        indexTheme += 0
+        //indexTheme += 0
        // game.cards.shuffle() ///???
     }
     
@@ -71,26 +84,26 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        indexTheme += 0
+        //indexTheme += 0
     }
     
     private var emoji = [Card : String]()
     
-    var emojiArray: [String: [String]] = [
-        "Animals" : ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷"],
-        "Fruits" : ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍈", "🍒", "🍑", "🥝"],
-        "Faces" : ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "☺️", "😊", "😇", "🙂", "🙃"],
-        "Objects" : ["⌚️", "📱", "💻", "⌨️", "🖥", "🖨", "🖱", "🖲", "🕹", "🗜", "💽", "💾", "📼"],
-        "Sports" : ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏉", "🎱", "🏓", "🏸", "🥅", "🏒", "🏑"],
-        "Whater" : ["🌕", "☀️", "🌤", "🌧", "⛈", "❄️", "🌚", "🌞", "🌝", "🌈", "🌓", "🌑", "🌛"]
-    ]
-    private var emojiChoices: [String] = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷", "🐸", "🐵", "🙈", "🐒"]
-    
+//    var emojiArray: [String: [String]] = [
+//        "Animals" : ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷"],
+//        "Fruits" : ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍈", "🍒", "🍑", "🥝"],
+//        "Faces" : ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "☺️", "😊", "😇", "🙂", "🙃"],
+//        "Objects" : ["⌚️", "📱", "💻", "⌨️", "🖥", "🖨", "🖱", "🖲", "🕹", "🗜", "💽", "💾", "📼"],
+//        "Sports" : ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏉", "🎱", "🏓", "🏸", "🥅", "🏒", "🏑"],
+//        "Whater" : ["🌕", "☀️", "🌤", "🌧", "⛈", "❄️", "🌚", "🌞", "🌝", "🌈", "🌓", "🌑", "🌛"]
+//    ]
+    //private var emojiChoices: [String] = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷", "🐸", "🐵", "🙈", "🐒"]
+    private var emojiChoices = "🐶🐱🐭🐹🐰🦊🐻🐼🐨🐯🦁🐮🐷🐸🐵🙈🐒"
     
     private func emoji(for card: Card) -> String {
         if emoji[card] == nil, emojiChoices.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card] = emojiChoices.remove(at: randomIndex)
+            let randomIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arch4random)
+            emoji[card] = String(emojiChoices.remove(at: randomIndex))
         }
         return emoji[card] ?? "?"
     }
