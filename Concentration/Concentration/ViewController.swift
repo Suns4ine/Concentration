@@ -25,7 +25,7 @@ class ViewController: UIViewController {
                 button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             } else {
                 button.setTitle("", for: UIControlState.normal)
-                button.backgroundColor = card.isMatched ? UIColor.blue : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : cardBackColor
             }
         }
         flipCount.text = "Flips: \(game.flipCounts)"
@@ -39,12 +39,12 @@ class ViewController: UIViewController {
     }
     
     private var emojiTheme: [Theme] = [
-    Theme(name: "Animals", emojis: ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷"], viewColor: UIColor.black, cardColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)),
-    Theme(name: "Fruits", emojis: ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍈", "🍒", "🍑", "🥝"], viewColor: UIColor.black, cardColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)),
-    Theme(name: "Faces", emojis: ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "☺️", "😊", "😇", "🙂", "🙃"], viewColor: UIColor.black, cardColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)),
-    Theme(name: "Objects", emojis: ["⌚️", "📱", "💻", "⌨️", "🖥", "🖨", "🖱", "🖲", "🕹", "🗜", "💽", "💾", "📼"], viewColor: UIColor.black, cardColor:  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)),
-    Theme(name: "Sports", emojis: ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏉", "🎱", "🏓", "🏸", "🥅", "🏒", "🏑"], viewColor: UIColor.black, cardColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)),
-    Theme(name: "Whater", emojis: ["🌕", "☀️", "🌤", "🌧", "⛈", "❄️", "🌚", "🌞", "🌝", "🌈", "🌓", "🌑", "🌛"], viewColor: UIColor.black, cardColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+    Theme(name: "Animals", emojis: ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷"], viewColor: #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), cardColor: #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)),
+    Theme(name: "Fruits", emojis: ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍈", "🍒", "🍑", "🥝"], viewColor: #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1), cardColor: #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)),
+    Theme(name: "Faces", emojis: ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "☺️", "😊", "😇", "🙂", "🙃"], viewColor: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), cardColor: #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)),
+    Theme(name: "Objects", emojis: ["⌚️", "📱", "💻", "⌨️", "🖥", "🖨", "🖱", "🖲", "🕹", "🗜", "💽", "💾", "📼"], viewColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), cardColor:  #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)),
+    Theme(name: "Sports", emojis: ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏉", "🎱", "🏓", "🏸", "🥅", "🏒", "🏑"], viewColor: #colorLiteral(red: 1, green: 0.918415606, blue: 0.2051318884, alpha: 1), cardColor: #colorLiteral(red: 0.3361914456, green: 0.5688338876, blue: 1, alpha: 1)),
+    Theme(name: "Whater", emojis: ["🌕", "☀️", "🌤", "🌧", "⛈", "❄️", "🌚", "🌞", "🌝", "🌈", "🌓", "🌑", "🌛"], viewColor: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1), cardColor: #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1))
     ]
     
     override func viewDidLoad() {
@@ -88,9 +88,23 @@ class ViewController: UIViewController {
     
     @IBAction func newGame() {
         game.newGame()
+        let newIndexTheme = indexTheme
+        if newIndexTheme == emojiTheme.count.arc4random {
+            print(newIndexTheme)
+            if newIndexTheme == 0 {
+                indexTheme = newIndexTheme + 1
+            } else {
+                indexTheme = newIndexTheme - 1
+            }
+        } else {
         indexTheme = emojiTheme.count.arc4random
+            print(indexTheme)
+        }
         updateviewFromModel()
     }
+    
+    
+    
     
     private var emoji = [Int: String]()
     private var emojiChoices = [String]()
