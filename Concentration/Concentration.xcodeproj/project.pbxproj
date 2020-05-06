@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		128B604B2463152600A39410 /* ConcentrationThemeChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B604A2463152600A39410 /* ConcentrationThemeChooseViewController.swift */; };
 		D097DC86241CDD9400313562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D097DC85241CDD9400313562 /* AppDelegate.swift */; };
-		D097DC88241CDD9400313562 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D097DC87241CDD9400313562 /* ViewController.swift */; };
+		D097DC88241CDD9400313562 /* ConcentrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D097DC87241CDD9400313562 /* ConcentrationViewController.swift */; };
 		D097DC8B241CDD9400313562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D097DC89241CDD9400313562 /* Main.storyboard */; };
 		D097DC8D241CDD9400313562 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D097DC8C241CDD9400313562 /* Assets.xcassets */; };
 		D097DC90241CDD9400313562 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D097DC8E241CDD9400313562 /* LaunchScreen.storyboard */; };
@@ -17,9 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		128B604A2463152600A39410 /* ConcentrationThemeChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationThemeChooseViewController.swift; sourceTree = "<group>"; };
 		D097DC82241CDD9400313562 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D097DC85241CDD9400313562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D097DC87241CDD9400313562 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D097DC87241CDD9400313562 /* ConcentrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationViewController.swift; sourceTree = "<group>"; };
 		D097DC8A241CDD9400313562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D097DC8C241CDD9400313562 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D097DC8F241CDD9400313562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +60,8 @@
 		D097DC84241CDD9400313562 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
-				D097DC87241CDD9400313562 /* ViewController.swift */,
+				D097DC87241CDD9400313562 /* ConcentrationViewController.swift */,
+				128B604A2463152600A39410 /* ConcentrationThemeChooseViewController.swift */,
 				D097DC89241CDD9400313562 /* Main.storyboard */,
 				D0F547CC241D4889004E8E2E /* Card.swift */,
 				D0F547CE241D4BB4004E8E2E /* Concentration.swift */,
@@ -105,11 +108,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Mittie Adan";
 				TargetAttributes = {
 					D097DC81241CDD9400313562 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -150,7 +154,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D097DC88241CDD9400313562 /* ViewController.swift in Sources */,
+				128B604B2463152600A39410 /* ConcentrationThemeChooseViewController.swift in Sources */,
+				D097DC88241CDD9400313562 /* ConcentrationViewController.swift in Sources */,
 				D0F547CF241D4BB4004E8E2E /* Concentration.swift in Sources */,
 				D0F547CD241D4889004E8E2E /* Card.swift in Sources */,
 				D097DC86241CDD9400313562 /* AppDelegate.swift in Sources */,
@@ -193,6 +198,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -200,6 +206,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -250,6 +257,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -257,6 +265,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -296,7 +305,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = madan.Concentration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -311,7 +320,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = madan.Concentration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
