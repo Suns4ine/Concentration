@@ -12,31 +12,45 @@ class ConcentrationViewController: UIViewController {
     
     private lazy var game = Concentration(numberOfPairsOfCards: numbersOfPairCards)
 
+    var theme: Int? {
+        didSet {
+//            emojiChoices = theme?.emojis ?? []
+//            emoji = [:]
+//            //titleLabel.text = theme?.name ?? "Name Theme"
+//            backgroundColor = theme?.viewColor ?? UIColor.blue
+//            cardBackColor = theme?.cardColor ?? UIColor.yellow
+            indexTheme = theme ?? emojiTheme.count.arc4random
+            updateviewFromModel()
+        }
+    }
     var numbersOfPairCards: Int {
         return (cardButtons.count + 1) / 2
     }
     
     private func updateviewFromModel() {
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp {
-                button.setTitle(emoji(for: card), for: UIControl.State.normal)
-                button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            } else {
-                button.setTitle("", for: UIControl.State.normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : cardBackColor
+        if cardButtons != nil{
+            for index in cardButtons.indices {
+                let button = cardButtons[index]
+                let card = game.cards[index]
+                if card.isFaceUp {
+                    button.setTitle(emoji(for: card), for: UIControl.State.normal)
+                    button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                } else {
+                    button.setTitle("", for: UIControl.State.normal)
+                    button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : cardBackColor
+                }
             }
+            flipCount.text = "Flips: \(game.flipCounts)"
         }
-        flipCount.text = "Flips: \(game.flipCounts)"
     }
     
-    private struct Theme {
+    struct Theme {
         var name: String
         var emojis: [String]
         var viewColor: UIColor
         var cardColor: UIColor
     }
+
     
     private var emojiTheme: [Theme] = [
     Theme(name: "Animals", emojis: ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷"], viewColor: #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), cardColor: #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)),
@@ -49,7 +63,6 @@ class ConcentrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        indexTheme = emojiTheme.count.arc4random
         updateviewFromModel()
     }
 
@@ -66,13 +79,12 @@ class ConcentrationViewController: UIViewController {
         didSet {
             print(indexTheme, emojiTheme[indexTheme].name)
             emoji = [Int: String]()
-            titleLabel.text = emojiTheme[indexTheme].name
-            
             emojiChoices = emojiTheme[indexTheme].emojis
             backgroundColor = emojiTheme[indexTheme].viewColor
             cardBackColor = emojiTheme[indexTheme].cardColor
-            
+
             updateAppearance()
+            titleLabel.text = emojiTheme[indexTheme].name
         }
     }
 
@@ -88,18 +100,18 @@ class ConcentrationViewController: UIViewController {
     
     @IBAction func newGame() {
         game.newGame()
-        let newIndexTheme = indexTheme
-        if newIndexTheme == emojiTheme.count.arc4random {
-            print(newIndexTheme)
-            if newIndexTheme == 0 {
-                indexTheme = newIndexTheme + 1
-            } else {
-                indexTheme = newIndexTheme - 1
-            }
-        } else {
-        indexTheme = emojiTheme.count.arc4random
-            print(indexTheme)
-        }
+//        let newIndexTheme = indexTheme
+//        if newIndexTheme == emojiTheme.count.arc4random {
+//            print(newIndexTheme)
+//            if newIndexTheme == 0 {
+//                indexTheme = newIndexTheme + 1
+//            } else {
+//                indexTheme = newIndexTheme - 1
+//            }
+//        } else {
+//        indexTheme = emojiTheme.count.arc4random
+//            print(indexTheme)
+//        }
         updateviewFromModel()
     }
     
