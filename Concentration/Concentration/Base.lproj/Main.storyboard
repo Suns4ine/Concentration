@@ -25,7 +25,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Sports"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="etV-N6-zB8"/>
+                                            <action selector="changeTheme:" destination="p6E-7q-LqG" eventType="touchUpInside" id="inP-Fg-6NM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJQ-a0-Can">
@@ -33,7 +33,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Animals"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="4cA-Z0-YkO"/>
+                                            <action selector="changeTheme:" destination="p6E-7q-LqG" eventType="touchUpInside" id="7ra-o0-jOn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCS-AV-ocl">
@@ -41,7 +41,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Faces"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="Pie-3G-jv3"/>
+                                            <action selector="changeTheme:" destination="p6E-7q-LqG" eventType="touchUpInside" id="nMk-et-w2a"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GED-Ne-dSl">
@@ -49,7 +49,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Fruits"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="4Ad-OI-ukh"/>
+                                            <action selector="changeTheme:" destination="p6E-7q-LqG" eventType="touchUpInside" id="jvY-kw-PC7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v31-ZO-ufL">
@@ -57,7 +57,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Objects"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="pLj-kG-b8T"/>
+                                            <action selector="changeTheme:" destination="p6E-7q-LqG" eventType="touchUpInside" id="7sg-gS-fLT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qC-c5-cD9">
@@ -65,7 +65,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Whater"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="h26-Xk-VIs"/>
+                                            <action selector="changeTheme:" destination="p6E-7q-LqG" eventType="touchUpInside" id="fXn-SP-EUg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -79,6 +79,9 @@
                         <viewLayoutGuide key="safeArea" id="02b-JF-A7U"/>
                     </view>
                     <navigationItem key="navigationItem" id="WlN-Va-NE0"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="pxF-y2-8Lb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyJ-Xx-1jN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -363,7 +366,4 @@
             <point key="canvasLocation" x="-1463.2" y="131.52709359605913"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="4cA-Z0-YkO"/>
-    </inferredMetricsTieBreakers>
 </document>

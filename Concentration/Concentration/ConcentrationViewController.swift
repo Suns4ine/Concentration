@@ -14,15 +14,11 @@ class ConcentrationViewController: UIViewController {
 
     var theme: Int? {
         didSet {
-//            emojiChoices = theme?.emojis ?? []
-//            emoji = [:]
-//            //titleLabel.text = theme?.name ?? "Name Theme"
-//            backgroundColor = theme?.viewColor ?? UIColor.blue
-//            cardBackColor = theme?.cardColor ?? UIColor.yellow
             indexTheme = theme ?? emojiTheme.count.arc4random
             updateviewFromModel()
         }
     }
+    
     var numbersOfPairCards: Int {
         return (cardButtons.count + 1) / 2
     }
